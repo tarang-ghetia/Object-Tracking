@@ -1,21 +1,8 @@
 # Object Tracking using YOLOv3, Deep Sort and Tensorflow
 This repository implements YOLOv3 and Deep SORT in order to perfrom real-time object tracking. Yolov3 is an algorithm that uses deep convolutional neural networks to perform object detection. We can feed these object detections into Deep SORT (Simple Online and Realtime Tracking with a Deep Association Metric) in order for a real-time object tracker to be created.
 
-![Demo of Object Tracker](data/helpers/demo.gif)
 
 ## Getting started
-
-#### Conda (Recommended)
-
-```bash
-# Tensorflow CPU
-conda env create -f conda-cpu.yml
-conda activate tracker-cpu
-
-# Tensorflow GPU
-conda env create -f conda-gpu.yml
-conda activate tracker-gpu
-```
 
 #### Pip
 ```bash
@@ -47,9 +34,6 @@ wget https://pjreddie.com/media/files/yolov3-tiny.weights -O weights/yolov3-tiny
 For Windows:
 You can download the yolov3 weights by clicking [here](https://pjreddie.com/media/files/yolov3.weights) and yolov3-tiny [here](https://pjreddie.com/media/files/yolov3-tiny.weights) then save them to the weights folder.
 
-### Using Custom trained weights
-<strong> Learn How To Train Custom YOLOV3 Weights Here: https://www.youtube.com/watch?v=zJDUhGL26iU </strong>
-
 Add your custom weights file to weights folder and your custom .names file into data/labels folder.
   
 ### Saving your yolov3 weights as a TensorFlow model.
@@ -70,28 +54,8 @@ After executing one of the above lines, you should see proper .tf files in your 
 
 ## Running the Object Tracker
 Now you can run the object tracker for whichever model you have created, pretrained, tiny, or custom.
-```
-# yolov3 on video
-python object_tracker.py --video ./data/video/test.mp4 --output ./data/video/results.avi
 
-#yolov3 on webcam 
-python object_tracker.py --video 0 --output ./data/video/results.avi
-
-#yolov3-tiny 
-python object_tracker.py --video ./data/video/test.mp4 --output ./data/video/results.avi --weights ./weights/yolov3-tiny.tf --tiny
-
-#yolov3-custom (add --tiny flag if your custom weights were trained for tiny model)
-python object_tracker.py --video ./data/video/test.mp4 --output ./data/video/results.avi --weights ./weights/yolov3-custom.tf --num_classes <# CLASSES> --classes ./data/labels/<YOUR CUSTOM .names FILE>
-```
 The output flag saves your object tracker results as an avi file for you to watch back. It is not necessary to have the flag if you don't want to save the resulting video.
-
-There is a test video uploaded in the data/video folder called test.mp4. If you followed all the steps properly with the pretrained coco yolov3.weights model then when your run the object tracker wiht the first command above you should see the following.
-#### Video Example
-![Demo of Object Tracker](data/helpers/demo.gif)
-
-#### Webcam Example
-This is a demo of running the object tracker using the above command for running the object tracker on your webcam.
-![Webcam Demo](data/helpers/webcam_demo.gif)
 
 ## Command Line Args Reference
 ```
